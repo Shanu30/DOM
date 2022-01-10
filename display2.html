@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ascending descending</title>
+    <style>
+        table {
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(231, 230, 230)
+        }
+        td {
+            padding: 1%;
+        }
+        thead {
+            background-color: black;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <input id="name" type="text" placeholder="Name"/>
+        </br>
+        </br>
+        <input id="dept" type="text" placeholder="Department"/>
+        </br>
+        </br>
+        <input id="y1" type="number" placeholder="sales in year1"/>
+        </br>
+        </br>
+        <input id="y2" type="number" placeholder="sales in year2"/>
+        </br>
+        </br>
+        <input type="submit"/>
+    </form>
+    </br>
+    </br>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Department</td>
+                <td>sales in year1</td>
+                <td>sales in year2</td>
+                <td>average sales</td>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</br>
+</br>
+<button id="ascending" onclick="ascending()">ascending</button>
+<button id="descending" onclick="descending()">descending</button>
+    
+    <script>
+        var aveArr = [];
+        document.querySelector("form").addEventListener("submit", clickSubmit);
+
+        function clickSubmit(event) {
+            event.preventDefault();
+            let data = [];
+            var name = document.getElementById("name").value;
+            var dept = document.getElementById("dept").value;
+            var y1 = document.getElementById("y1").value;
+            var y2 = document.getElementById("y2").value;
+            var ave = Math.floor((Number(y1)+Number(y2))/2);
+            data.push(name, dept, y1, y2, ave);
+            aveArr.push(data);
+            var tr = document.createElement("tr");
+        
+            var td1 = document.createElement("td");
+            td1.textContent = name;
+            var td2 = document.createElement("td");
+            td2.textContent = dept;
+            var td3 = document.createElement("td");
+            td3.textContent = y1;
+            var td4 = document.createElement("td");
+            td4.textContent = y2;
+            var td5 = document.createElement("td");
+            td5.textContent = ave;
+
+            tr.append(td1, td2, td3, td4, td5);
+            document.querySelector("tbody").append(tr);
+        }
+
+        function ascending() {
+            aveArr.sort((a,b)=>(a[4]-b[4]));
+            let tbody = document.querySelector("tbody");
+            tbody.innerHTML= "";
+            for(let i=0; i<aveArr.length; i++) {
+                var tr = document.createElement("tr");
+        
+                var td1 = document.createElement("td");
+                td1.textContent = aveArr[i][0];
+                var td2 = document.createElement("td");
+                td2.textContent = aveArr[i][1];
+                var td3 = document.createElement("td");
+                td3.textContent = aveArr[i][2];
+                var td4 = document.createElement("td");
+                td4.textContent = aveArr[i][3];
+                var td5 = document.createElement("td");
+                td5.textContent = aveArr[i][4];
+                tr.append(td1, td2, td3, td4, td5);
+                tbody.append(tr);
+            }
+        }
+        function descending() {
+            aveArr.sort((a,b)=>(b[4]-a[4]));
+            let tbody = document.querySelector("tbody");
+            tbody.innerHTML= "";
+            for(let i=0; i<aveArr.length; i++) {
+                var tr = document.createElement("tr");
+        
+                var td1 = document.createElement("td");
+                td1.textContent = aveArr[i][0];
+                var td2 = document.createElement("td");
+                td2.textContent = aveArr[i][1];
+                var td3 = document.createElement("td");
+                td3.textContent = aveArr[i][2];
+                var td4 = document.createElement("td");
+                td4.textContent = aveArr[i][3];
+                var td5 = document.createElement("td");
+                td5.textContent = aveArr[i][4];
+                tr.append(td1, td2, td3, td4, td5);
+                tbody.append(tr);
+            }
+        }
+        
+        
+        
+
+    </script>
+</body>
+</html>
