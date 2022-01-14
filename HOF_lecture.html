@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOF</title>
+</head>
+<body>
+    <h1></h1>
+    <h2></h2>
+    <p></p>
+    <script>
+        /*list of higher order function:
+        -foreach
+        -map
+        -sort
+        -filter
+        -reduce
+        */
+       //forEach
+        let  a = [2, 3, 5, 7, 9];
+        a.forEach((n)=>console.log(n*2))
+
+        //filter
+        const arr = [1,2,3,4,5,6,7,8,9];
+        const isGreaterThan4 = x => x>4;
+        let a = arr.filter(isGreaterThan4).join(" ");
+        document.querySelector("p").textContent = arr.filter(isGreaterThan4);
+        document.querySelector("h1").textContent = a;
+
+        const name = ["sanu", "sunny", "ankit", "anand","anjali", "monu"];
+        const lenGrtrthn4 = y => y.length>4;
+        document.querySelector("h2").textContent = name.filter(lenGrtrthn4);
+        
+        //setTimeout(function, time_in_milisec)
+        let myTimeOut = setTimeout(()=>console.log("I am setTimeout"),5000);
+        //clearTimeout(myTimeOut);
+        //setInterval
+        let x = "Hello"
+        let count = 0;
+        myInterval = setInterval(()=>{console.log(x)
+        x=x+"Hello";
+        count++;
+        },2000)
+        clearInterval(myInterval)
+    </script>
+    
+</body>
+</html>
