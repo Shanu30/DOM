@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            display: grid;
+            grid-template-columns: repeat(4,25%);
+        }
+        img{
+            width: 200px;
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+        var product = [
+            {
+                name:"Nike Shoe",
+                price:999,
+                image: "https://images.pexels.com/photos/2529157/pexels-photo-2529157.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Nike Shoe1",
+                price:2999,
+                image: "https://images.pexels.com/photos/2529157/pexels-photo-2529157.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Nike Shoe2",
+                price:1999,
+                image: "https://images.pexels.com/photos/2529157/pexels-photo-2529157.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Nike Shoe3",
+                price:3999,
+                image: "https://images.pexels.com/photos/2529157/pexels-photo-2529157.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Nike Shoe4",
+                price:5999,
+                image: "https://images.pexels.com/photos/2529157/pexels-photo-2529157.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Nike Shoe5",
+                price:4999,
+                image: "https://images.pexels.com/photos/2529157/pexels-photo-2529157.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Nike Shoe6",
+                price:9999,
+                image: "https://images.pexels.com/photos/2529157/pexels-photo-2529157.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Nike Shoe7",
+                price:6999,
+                image: "https://images.pexels.com/photos/2529157/pexels-photo-2529157.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Nike Shoe8",
+                price:7999,
+                image: "https://images.pexels.com/photos/2529157/pexels-photo-2529157.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            }
+        ]
+
+        function appendProduct(data) {
+            data.forEach(function(product){
+                var div = document.createElement("div");
+                var img = document.createElement("img");
+                img.src =product.image;
+                var name = document.createElement("p");
+                name.innerText = product.name;
+                var price = document.createElement("p");
+                price.innerText = `${product.price} rs`;
+                var button = document.createElement("button");
+                button.innerText = "Add to cart";
+                button.onclick = function(){
+                    addtoCart(product)
+                }
+                div.append(img,name,price,button);
+                document.getElementById("main").append(div)
+            })
+        }
+        appendProduct(product)
+
+
+        function addtoCart(item) {
+            var cart = JSON.parse(localStorage.getItem("cart"));
+            if (cart===null) {
+                cart = [];
+                localStorage.setItem("cart", JSON.stringify(cart))
+            }
+            cart.push(item);
+            localStorage.setItem("cart", JSON.stringify(cart))
+            console.log("cart", cart)
+        }
+    </script>
+</body>
+</html>

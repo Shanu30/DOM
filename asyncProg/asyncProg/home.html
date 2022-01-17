@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        /*navbar*/
+        #navbar {
+            width: 100%;
+            align-items: center;
+            position: fixed;
+            border-bottom: 1px solid rgb(8, 187, 139);
+        }
+
+        #navbar:before {
+            content: "";
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+        }
+
+        /*navbar: list*/
+        #navbar ul {
+            float: right;
+            display: flex;
+            gap: 10%;
+            width: 35%;
+        }
+
+        #navbar ul li {
+            list-style: none;
+            font-size: 25px;
+            margin: 0 2%;
+        }
+
+        #navbar ul li a {
+            display: block;
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            color: rgb(17, 50, 40);
+            margin: 20px;
+        }
+
+        #navbar ul li a:hover {
+            color: rgb(8, 187, 139);
+            text-decoration: underline;
+        }
+
+        #main {
+            background-color: whitesmoke;
+            padding: 80px 10% 20px 10%;
+        }
+        img{
+            width: 100%;
+            height: 500px;
+        }
+        #grid{
+
+            display: grid;
+            grid-template-columns: repeat(3,32%);
+            row-gap: 2%;
+            column-gap: 2%;
+        }
+        #grid img{
+            height: 300px;
+        }
+        #grid p{
+            margin-left:5% ;
+            margin-top: 2%;
+        }
+        #grid>div{
+            background-color:rgb(236, 236, 230);
+            padding: 2%;
+            border-radius: 4%;
+            border: 2px solid beige;
+        }
+        #grid>div>img+p+p{
+            font-size: x-small
+        }
+        #grid>div>img+p+p+p{
+            font-size: xx-small;
+            font-weight: 200;
+            width: 6%;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 3px;
+            background-color: rgb(247, 247, 15);
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <ul>
+            <li class="item"><a href="home.html">Home</a></li>
+            <li class="item"><a href="login.html">LogIn</a></li>
+            <li class="item"><a href="signup.html">Signup</a></li>
+        </ul>
+    </nav>
+    <main id="main">
+
+    </main>
+    <script>
+//slide show
+        var image = document.createElement("img");
+        var main = document.getElementById("main");
+        var img_array = ["https://images.pexels.com/photos/257385/pexels-photo-257385.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500","https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500","https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500","https://images.pexels.com/photos/3137890/pexels-photo-3137890.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500","https://images.pexels.com/photos/7234381/pexels-photo-7234381.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"];
+        var index = 0;
+        function slide() {
+            image.setAttribute("src", img_array[index]);
+            index++;
+            if (index >= img_array.length) {
+                index = 0;
+            }
+        }
+        setInterval("slide()", 2000);
+        main.append(image);
+
+//movies card
+        var movies = [
+            {
+                name:"Captain America",
+                Release:"20-05-2019",
+                IMDb: 1,
+                image: "https://images.pexels.com/photos/5691359/pexels-photo-5691359.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Captain Marvel",
+                Release:"01-05-2019",
+                IMDb: 2,
+                image: "https://images.pexels.com/photos/5691359/pexels-photo-5691359.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Iron Man",
+                Release:"25-05-2019",
+                IMDb: 3,
+                image: "https://images.pexels.com/photos/5691359/pexels-photo-5691359.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Captain America2",
+                Release:"20-07-2019",
+                IMDb: 4,
+                image: "https://images.pexels.com/photos/5691359/pexels-photo-5691359.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Hulk",
+                Release:"20-05-2019",
+                IMDb: 5,
+                image: "https://images.pexels.com/photos/5691359/pexels-photo-5691359.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Black Widow",
+                Release:"20-06-2019",
+                IMDb: 6,
+                image: "https://images.pexels.com/photos/5691359/pexels-photo-5691359.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Avengers",
+                Release:"20-05-2022",
+                IMDb: 7,
+                image: "https://images.pexels.com/photos/5691359/pexels-photo-5691359.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"American pie",
+                Release:"20-05-2019",
+                IMDb: 8,
+                image: "https://images.pexels.com/photos/5691359/pexels-photo-5691359.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            {
+                name:"Lucy",
+                Release:"20-05-2019",
+                IMDb: 9,
+                image: "https://images.pexels.com/photos/5691359/pexels-photo-5691359.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            },
+            
+        ]
+        let movieList = document.createElement("div");
+        movieList.id = "grid";
+        function appendCard(data) {
+            data.forEach(function(movies){
+                var card = document.createElement("div");
+
+                var img = document.createElement("img");
+                img.src = movies.image;
+                var name = document.createElement("p");
+                name.innerText = movies.name;
+                var release = document.createElement("p");
+                release.innerText = movies.Release;
+                var rating = document.createElement("p");
+                rating.innerText = movies.IMDb;
+
+                
+                card.append(img,name,release,rating);
+                movieList.append(card)
+            })
+            main.append(movieList);
+        }
+        appendCard(movies);
+    </script>
+</body>
+
+</html>

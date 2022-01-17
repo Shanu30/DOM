@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+            width: 100%;
+        }
+        /*navbar*/
+        #navbar {
+            width: 100%;
+            align-items: center;
+            position: fixed;
+            border-bottom: 1px solid rgb(8, 187, 139);
+        }
+        #navbar:before {
+            content: "";
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+        }
+
+        /*navbar: list*/
+        #navbar ul {
+            float: right;
+            display: flex;
+            gap: 10%;
+            width: 35%;
+        }
+        #navbar ul li {
+            list-style: none;
+            font-size: 25px;
+            margin: 0 2%;
+        }
+        #navbar ul li a{
+            display: block;
+            text-decoration: none;
+            font-family:  'Roboto', sans-serif;
+            color: rgb(17,50,40);
+            margin: 20px;
+        }
+        #navbar ul li a:hover {
+            color: rgb(8, 187, 139);
+            text-decoration: underline;
+        }
+        
+        #main {
+            background-color: whitesmoke;
+        }
+        .row {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            background-color: whitesmoke;
+        }
+        form {
+            display: block;
+            width: 40%;
+            margin-left: 10%;
+            padding: 150px;
+            margin: auto;
+        }
+        .row form input {
+            width: 80%;
+            height: 35px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li class="item"><a href="home.html">Home</a></li>
+            <li class="item"><a href="login.html">LogIn</a></li>
+            <li class="item"><a href="signup.html">Signup</a></li>
+        </ul>
+    </nav>
+    <main id="main">
+        <div class="row">
+            <form>
+                <input name="email" type="email" placeholder="Email"/>
+                <input name="password" type="password" placeholder="Password"/>
+                <input type="submit" value="SUBMIT"/>
+            </form>
+        </div> 
+    </main>
+    <script>
+         var form = document.querySelector("form");
+        form.addEventListener("submit", data);
+        function data(event){
+            event.preventDefault();
+            var email = event.target.email.value;
+            var pw = event.target.password.value;
+            var getData = JSON.parse(localStorage.getItem('data'));
+            var flag = false;
+            for(let i=0; i<getData.length; i++) {
+                if(getData[i].email===email && getData[i].pw===pw) {
+                    location.href = "home.html";
+                    flag = true;
+                } 
+            }
+            if(flag===false) {
+                alert("Invalid Credentials")
+            }
+            form.reset();
+            event.preventDefault();
+        };
+    </script>
+</body>
+</html>
