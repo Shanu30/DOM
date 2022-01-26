@@ -4,21 +4,93 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>todo</title>
+    <style>
+        form input {
+            height: 50px;
+            font-size: 30px;
+        }
+        li {
+            width: 50%;
+            display: flex;
+            flex-wrap: nowrap;
+            border: 1px solid red;
+            height: 50px;
+            font-size: 30px;
+            font-weight: 400;
+            justify-content: space-between;justify-items: center;
+        }
+        p{
+            height: 50px;margin: 10px 30px;
+        }
+        li input{
+            height:30px;
+            width: 30px;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        .checked {
+            text-decoration: line-through;
+            color:  green;
+
+        }
+
+    </style>
 </head>
 <body>
     <form>
-        <input type="text" name="task">
+        <input type="text" name="title">
         <input type="submit">
     </form>
+
+    <ol>
+
+    </ol>
     <script>
         const form = document.querySelector('form');
-        form.addEventListener('submit' , retrieve)
+        form.addEventListener('submit', append);
+        const ol = document.querySelector("ol");
         const todo = [];
-        function retrieve(event){
+        function append(event){
             event.preventDefault();
-            let name = event.target.task.value;
+            let title = event.target.title.value;
+            let id = Math.random();
+            let status = true;
+           
+            ol.innerHTML = null;
+            let item = {
+                id,
+                status,
+                title
+            }
+            todo.push(item);
+            let count = 0;
+            todo.forEach(element => {
+                let li = document.createElement("li");
+                let title = document.createElement("p");
+                title.innerText = element.title;
+                let checkbox = document.createElement("input");
+                checkbox.setAttribute("type", "checkbox");
+                checkbox.setAttribute("onclick", "changeColor()");
+                li.append(title,checkbox);
+                if(count%2===0) {
+                    li.style= "backgroundColor: rgb(214, 214, 214)"
+                }
+                
+                ol.append(li);
+            });
         }
+        function changeColor(){
+            let list = event.target.parentNode;
+            if(event.target.checked){
+                list.firstElementChild.setAttribute("class", "checked");
+            }else{
+                list.firstElementChild.setAttribute("class", "notChecked");
+            }
+        }
+    
+
+        
     </script>
 </body>
 </html>
