@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="task">
+        <input type="submit">
+    </form>
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit' , retrieve)
+        const todo = [];
+        function retrieve(event){
+            event.preventDefault();
+            let name = event.target.task.value;
+        }
+    </script>
+</body>
+</html>

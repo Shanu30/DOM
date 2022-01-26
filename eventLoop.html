@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event loop</title>
+    <style>
+        h1 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Event Loop</h1>
+    <p>Javascript is a single-threaded language at runtime which means only one thing can happen at a time. It also
+        means you can’t perform long operations such as network access without blocking the main thread.By using
+        asynchronous programming, you can perform long network requests without blocking the main thread.</br>
+        When you open a website in the browser, it uses a single JavaScript execution thread. That thread is responsible
+        to handle everything, like scrolling the web page, printing something on the web page, listen to DOM events.To
+        understand how this code is executed we have to understand event loop.
+    </p>
+    <script>
+        console.log(1)
+        setTimeout(function(){console.log(2)},6000)
+        console.log(3)
+        setTimeout(()=>console.log(4),2000)
+        console.log(5)
+        console.log(6)
+    </script>
+</body>
+
+</html>
