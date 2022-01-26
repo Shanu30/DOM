@@ -11,7 +11,7 @@
             font-size: 30px;
         }
         li {
-            width: 50%;
+            width: 70%;
             display: flex;
             flex-wrap: nowrap;
             border: 1px solid red;
@@ -33,6 +33,15 @@
             text-decoration: line-through;
             color:  green;
 
+        }
+        button {
+            width: 30%;
+            height: 50px;
+            font-size: 30px;
+            font-weight: 400;
+            color: whitesmoke;
+            background-color: red;
+            border: 1px solid red;
         }
 
     </style>
@@ -64,18 +73,18 @@
                 title
             }
             todo.push(item);
-            let count = 0;
+            console.log(todo)
             todo.forEach(element => {
                 let li = document.createElement("li");
                 let title = document.createElement("p");
+                let delBtn = document.createElement("button");
                 title.innerText = element.title;
                 let checkbox = document.createElement("input");
+                delBtn.innerText = "Delete"
                 checkbox.setAttribute("type", "checkbox");
                 checkbox.setAttribute("onclick", "changeColor()");
-                li.append(title,checkbox);
-                if(count%2===0) {
-                    li.style= "backgroundColor: rgb(214, 214, 214)"
-                }
+                delBtn.setAttribute("onclick", "deleteLine()");
+                li.append(title,checkbox,delBtn);
                 
                 ol.append(li);
             });
@@ -84,9 +93,21 @@
             let list = event.target.parentNode;
             if(event.target.checked){
                 list.firstElementChild.setAttribute("class", "checked");
-            }else{
-                list.firstElementChild.setAttribute("class", "notChecked");
             }
+        }
+        function deleteLine() {
+            let list = event.target.parentNode;
+            let el = list.firstElementChild.innerText;
+            console.log(el)
+            for(let i=0; i<todo.length; i++) {
+                if(todo[i].title===el) {
+                    todo.splice(i,1);
+                    list.remove();
+                    break;
+                }
+            }
+            
+
         }
     
 
