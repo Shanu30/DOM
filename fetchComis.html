@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        #container{
+            width: 70%;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            row-gap: 20px;
+            column-gap: 5px;
+        }
+        #container > div{
+            width: 30%;
+            border: 5px solid beige;
+            background-color: rgb(243, 243, 233);
+            border-radius: 10px;
+            padding: 3px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Comics</h1>
+    <div id ="container"></div>
+    
+    <script>
+        let i=1;
+        const container = document.getElementById('container');
+        let url = "https://reqres.in/api/users"
+        fetch(url)
+        .then((res) =>{
+            return res.json()
+            
+        })
+        .then((res) =>{
+            retrieve(res.data)
+            retrieve2(res.data)
+        })
+        .catch((err)=>{
+            alert("Error Found")
+        })
+        function retrieve(data){
+             for(let information of data){
+                let div = document.createElement('div');
+                display(div,information);
+                container.append(div);
+            }
+        }
+        function retrieve2(data){
+            for(let i=0;i<4;i++){
+                let div = document.createElement('div');
+                display(div,data[i]);
+                container.append(div);
+            }
+        }
+        function display(div,data){
+            data.id = i > 6?data.id+6:data.id;
+            i++;
+            div.innerHTML = `<h2>${data.id}</h2>
+                <img src="${data.avatar}" alt="img">
+                <h1>${data.first_name} ${data.last_name}</h1>
+                <p>Email - ${data.email}</p>`;
+        }
+
+       
+    </script>
+</body>
+</html>
